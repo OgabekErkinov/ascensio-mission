@@ -22,7 +22,7 @@ const Card = ({ product }) => {
   return (
     <div className='product' onClick={() => handleProductClick(product)}>
       <div className='product_image'>
-        <Image src={product?.image} alt={product?.name} height={200} width={200} />
+        <Image src={product?.image} alt={product?.name} height={150} width={200} />
       </div>
       <div className='product_info'>
         <h4>{product?.name}</h4>
