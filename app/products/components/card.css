@@ -43,7 +43,7 @@
 }
 
 .product_name {
-    font-size: 1.2rem; /* Mahsulot nomi uchun o'lcham qo'shdim */
+    font-size: 1.2rem; 
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -54,8 +54,27 @@
     font-weight: 500;
 }
 
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    padding: 0 5px;
+}
+
+.btn-action{
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
 .btn_toCart {
-    background-color: #4CAF50; /* To'liq yashil tugma */
+    background-color: #4CAF50; 
     color: white;
     padding: 10px 20px;
     border: none;

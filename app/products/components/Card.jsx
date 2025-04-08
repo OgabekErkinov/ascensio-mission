@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { MyContext } from '@/app/libs/context/MyContext';
 
 const Card = ({ product }) => {
-  const { setSelectedProduct, setCarts } = useContext(MyContext);
+  const { setSelectedProduct, setCarts, carts } = useContext(MyContext);
   const router = useRouter();
 
   const handleProductClick = (product) => {
@@ -15,9 +15,40 @@ const Card = ({ product }) => {
     router.push(`/products/${product?.slug}`);
   };
 
-  const handleAddToCart = (product) => {
-    setCarts(prevCarts => [...prevCarts, product]);  
+  const handleAddCart = (product) => {
+    const existing = carts?.find(cart => cart?.product?.id === product?.id);
+  
+    if (existing) {
+      const updatedCarts = carts.map(cart =>
+        cart.product.id === product.id
+          ? { ...cart, quantity: cart.quantity + 1 }
+          : cart
+      );
+      setCarts(updatedCarts);
+    } else {
+      setCarts([...carts, { product, quantity: 1 }]);
+    }
   };
+
+  const handleRemoveCart = (product) => {
+    const existing = carts?.find(cart => cart?.product?.id === product?.id);
+  
+    if (existing) {
+      if (existing.quantity > 1) {
+        const updatedCarts = carts.map(cart =>
+          cart.product.id === product.id
+            ? { ...cart, quantity: cart.quantity - 1 }
+            : cart
+        );
+        setCarts(updatedCarts);
+      } else {
+        
+        setCarts(carts.filter(cart => cart.product.id !== product.id));
+      }
+    }
+  };
+  
+  
 
 
   return (
@@ -30,15 +61,18 @@ const Card = ({ product }) => {
         <h6 className='product_name'>COLOR : {product?.properties?.color}</h6>
         <h6 className='product_price'>PRICE : {product?.price}$</h6>
       </div>
+      <div className = 'btn-group'>
+        <button className = 'btn-action' onClick = {(e) =>{e.stopPropagation(); handleRemoveCart(product)}}>-</button>
       <button 
         className='btn_toCart' 
-        onClick={(e) => {
-          e.stopPropagation();  
-          handleAddToCart(product);  
-        }}
       >
-        <FaCartShopping />
+        <FaCartShopping /> 
+        {
+          carts?.find(cartProduct => cartProduct?.product?.id === product?.id)?.quantity || 0
+        }
       </button>
+      <button className = 'btn-action' onClick = {(e) =>{e.stopPropagation(); handleAddCart(product)}}>+</button>
+      </div>
     </div>
   );
 };
