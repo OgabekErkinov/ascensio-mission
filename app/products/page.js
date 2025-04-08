@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import './products.css'
 import Head from 'next/head';
 import Card from '../products/components/Card';

@@ -4,20 +4,21 @@ import { FaCartShopping } from "react-icons/fa6";
 import Image from 'next/image';
 import './card.css';
 import { useRouter } from "next/navigation"; 
-import { MyContext } from '@/app/libs/context/MyContext';  // Contextni import qilish
+import { MyContext } from '@/app/libs/context/MyContext';
 
 const Card = ({ product }) => {
-  const { setSelectedProduct, setCarts } = useContext(MyContext);  // Contextdan funksiyalarni olish
+  const { setSelectedProduct, setCarts } = useContext(MyContext);
   const router = useRouter();
 
   const handleProductClick = (product) => {
-    setSelectedProduct(product);  // Mahsulotni contextda saqlash
-    router.push(`/products/${product?.slug}`);  // Mahsulot sahifasiga o'tish
+    setSelectedProduct(product);  
+    router.push(`/products/${product?.slug}`);
   };
 
   const handleAddToCart = (product) => {
-    setCarts(prevCarts => [...prevCarts, product]);  // Cartga mahsulot qo'shish
+    setCarts(prevCarts => [...prevCarts, product]);  
   };
+
 
   return (
     <div className='product' onClick={() => handleProductClick(product)}>
