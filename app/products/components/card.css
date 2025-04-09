@@ -37,9 +37,10 @@
     width: 100%;
     padding: 5px;
 
+
     display: flex;
     flex-direction: column;
-    justify-content: space-around; /* Info qismidagi elementlar orasidagi masofani yaxshilash */
+    justify-content: space-around; 
 }
 
 .product_name {
@@ -55,8 +56,9 @@
 }
 
 .btn-group {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
     align-items: center;
 
     width: 100%;
@@ -65,7 +67,7 @@
 
 .btn-action{
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -82,6 +84,9 @@
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s ease;
+
+    display: flex;
+    gap: 5px;
 }
 
 .btn_toCart:hover {

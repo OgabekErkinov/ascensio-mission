@@ -8,3 +8,21 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  height: 100%;
+  width: 100%;
+}
+
+.button{
+  padding: 10px;
+  width: 120px;
+  cursor: pointer;
+  user-select: none;
+}
+

@@ -18,6 +18,18 @@ const MyProvider = ({ children }) => {
       });
   }, []);
 
+useEffect(() => {
+  const savedCarts = localStorage.getItem('carts');
+  if (savedCarts) {
+    setCarts(JSON.parse(savedCarts));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem('carts', JSON.stringify(carts));
+}, [carts]);
+
+
 
   const store = {
     selectedProduct,

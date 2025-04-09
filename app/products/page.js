@@ -6,9 +6,11 @@ import Head from 'next/head';
 import Card from '../products/components/Card';
 import { FaCartShopping } from 'react-icons/fa6';
 import { MyContext } from '../libs/context/MyContext';
+import { useRouter } from 'next/navigation';
 
 
 const ProductsPage = () => {
+  const router = useRouter()
   const { carts, products, inputValue, setInputValue } = useContext(MyContext)
 
   const [productCount, setProductCount] = useState(10)
@@ -36,9 +38,9 @@ const ProductsPage = () => {
          <input placeholder = 'product name' className = 'search-input' 
                 value = {inputValue} 
                 onChange = {(e) => setInputValue(e.target.value)}/>
-         <div className = 'cartIcon'>
+         <div className = 'cartIcon' onClick = {() => router.push('/carts')}>
            <FaCartShopping color='black'/>
-           <span>{carts?.length > 0 && carts?.length}</span>
+           {carts?.length > 0 && <span> {carts?.length}</span> }
          </div>
 
       </div>

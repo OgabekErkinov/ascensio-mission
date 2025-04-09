@@ -1,8 +1,8 @@
-/* general styling */
 .product-detail-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    color: gray;
 }
 
 .product-title {
@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    flex-wrap: wrap; 
 }
 
 .product-image img {
@@ -24,13 +24,18 @@
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
-    max-height: 400px; /* Optional: set a max height to control image size */
+    max-height: 400px; 
 }
 
 .product-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    padding-top: 10px;
     max-width: 600px;
     font-size: 1rem;
-    flex: 1; /* Allow the description section to grow */
+    flex: 1;
 }
 
 .product-description h2 {
@@ -42,7 +47,7 @@
     margin: 10px 0;
 }
 
-/* Error page styling */
+
 .error-container {
     text-align: center;
     padding: 50px;
