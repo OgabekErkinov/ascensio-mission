@@ -70,11 +70,11 @@ const Carts = () => {
             <h3>{item?.product?.name}</h3>
             <p>${item?.product?.price} x {item?.product?.quantity}</p>
             <div className="quantity-controls">
-              <button onClick={() => handleDecrease(item.product)}>-</button>
+              <button onClick={(e) =>{e.stopPropagation(); handleDecrease(item.product)}}>-</button>
               <span>{item?.quantity}</span>
-              <button onClick={() => handleIncrease(item.product)}>+</button>
+              <button onClick={(e) =>{e.stopPropagation(); handleIncrease(item.product)}}>+</button>
             </div>
-            <button onClick={() => handleRemove(item.product.id)} className="remove-btn">Remove</button>
+            <button onClick={(e) =>{e.stopPropagation(); handleRemove(item.product.id)}} className="remove-btn">Remove</button>
           </div>
           <div className='price'>
             ${(item?.product?.price * item?.quantity).toFixed(2)}
